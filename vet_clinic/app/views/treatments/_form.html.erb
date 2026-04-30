@@ -1,0 +1,15 @@
+<%= form_with(model: [@appointment, treatment]) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <div class="mb-3">
+    <%= f.label :name, "Nombre del Tratamiento", class: "form-label" %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :administered_at, "Fecha de Aplicación", class: "form-label" %>
+    <%= f.datetime_field :administered_at, class: "form-control" %>
+  </div>
+
+  <%= f.submit "Guardar Tratamiento", class: "btn btn-primary" %>
+<% end %>

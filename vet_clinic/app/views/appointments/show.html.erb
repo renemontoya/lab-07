@@ -1,0 +1,24 @@
+<h1>Detalle de la Cita</h1>
+
+<div class="card mb-3">
+  <div class="card-body">
+    <p><strong>Fecha:</strong> <%= @appointment.date %></p>
+    <p><strong>Mascota:</strong> <%= @appointment.pet.name %></p>
+    <p><strong>Veterinario:</strong> <%= @appointment.vet.last_name %></p>
+    <p><strong>Motivo:</strong> <%= @appointment.reason %></p>
+    <p><strong>Estado:</strong> <%= @appointment.status.humanize %></p>
+  </div>
+</div>
+
+<h3>Tratamientos</h3>
+<ul class="list-group mb-3">
+  <% @appointment.treatments.each do |treatment| %>
+    <li class="list-group-item">
+      <strong><%= treatment.name %></strong> - Aplicado el: <%= treatment.administered_at %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Agregar Tratamiento', new_appointment_treatment_path(@appointment), class: "btn btn-success" %>
+<br><br>
+<%= link_to 'Volver', appointments_path, class: "btn btn-secondary" %>

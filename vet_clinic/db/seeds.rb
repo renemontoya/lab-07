@@ -15,13 +15,15 @@ vet1 = Vet.create!(first_name: "Ana", last_name: "Rojas", email: "ana.vet@clinic
 vet2 = Vet.create!(first_name: "Pedro", last_name: "Silva", email: "pedro.vet@clinic.com", phone: "933333333", specialization: "Surgery")
 
 puts "Creando Pets..."
-pet1 = Pet.create!(name: "Firulais", species: "Dog", breed: "Quiltro", date_of_birth: "2019-05-10", weight: 15.5, owner_id: owner1.id)
-pet2 = Pet.create!(name: "Pelusa", species: "Cat", breed: "Persian", date_of_birth: "2020-08-20", weight: 4.2, owner_id: owner1.id)
-pet3 = Pet.create!(name: "Tambor", species: "Rabbit", breed: "Angora", date_of_birth: "2022-01-15", weight: 1.8, owner_id: owner2.id)
-pet4 = Pet.create!(name: "Rex", species: "Dog", breed: "German Shepherd", date_of_birth: "2018-11-05", weight: 30.0, owner_id: owner2.id)
-pet5 = Pet.create!(name: "Michi", species: "Cat", breed: "Siamese", date_of_birth: "2021-03-30", weight: 3.5, owner_id: owner3.id)
+# OJO: Se cambiaron a minúsculas ("dog", "cat", "rabbit") para pasar la validación del Lab 5
+pet1 = Pet.create!(name: "Firulais", species: "dog", breed: "Quiltro", date_of_birth: "2019-05-10", weight: 15.5, owner_id: owner1.id)
+pet2 = Pet.create!(name: "Pelusa", species: "cat", breed: "Persian", date_of_birth: "2020-08-20", weight: 4.2, owner_id: owner1.id)
+pet3 = Pet.create!(name: "Tambor", species: "rabbit", breed: "Angora", date_of_birth: "2022-01-15", weight: 1.8, owner_id: owner2.id)
+pet4 = Pet.create!(name: "Rex", species: "dog", breed: "German Shepherd", date_of_birth: "2018-11-05", weight: 30.0, owner_id: owner2.id)
+pet5 = Pet.create!(name: "Michi", species: "cat", breed: "Siamese", date_of_birth: "2021-03-30", weight: 3.5, owner_id: owner3.id)
 
 puts "Creando Appointments..."
+# Los números 0, 1, 2, 3 funcionan perfecto porque automáticamente se mapean a tu Enum
 app1 = Appointment.create!(pet_id: pet1.id, vet_id: vet1.id, date: DateTime.now - 2.days, reason: "Annual checkup", status: 2)
 app2 = Appointment.create!(pet_id: pet2.id, vet_id: vet1.id, date: DateTime.now - 1.day, reason: "Vaccination", status: 2)
 app3 = Appointment.create!(pet_id: pet3.id, vet_id: vet2.id, date: DateTime.now, reason: "Stomach pain", status: 1)

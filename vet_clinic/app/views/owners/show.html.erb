@@ -1,0 +1,13 @@
+<h1>Owner Details</h1>
+
+<div class="card mb-3">
+  <div class="card-body">
+    <p><strong>Name:</strong> <%= @owner.first_name %> <%= @owner.last_name %></p>
+    <p><strong>Email:</strong> <%= @owner.email %></p>
+    <p><strong>Phone:</strong> <%= @owner.phone %></p>
+    <p><strong>Address:</strong> <%= @owner.address %></p>
+  </div>
+</div>
+
+<%= link_to 'Edit', edit_owner_path(@owner), class: "btn btn-warning" %> |
+<%= link_to 'Back to Owners', owners_path, class: "btn btn-secondary" %>

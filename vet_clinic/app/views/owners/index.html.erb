@@ -1,0 +1,31 @@
+<h1>Owners</h1>
+
+<%= link_to 'New Owner', new_owner_path, class: "btn btn-primary mb-3" %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Actions</th> </tr>
+  </thead>
+  <tbody>
+    <% @owners.each do |owner| %>
+      <tr>
+        <td><%= owner.first_name %></td>
+        <td><%= owner.last_name %></td>
+        <td><%= owner.email %></td>
+        
+        <td>
+          <div class="d-flex gap-2">
+            <%= link_to 'Show', owner, class: "btn btn-sm btn-info" %>
+            <%= link_to 'Edit', edit_owner_path(owner), class: "btn btn-sm btn-warning" %>
+            <%= button_to 'Delete', owner, method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class: "btn btn-sm btn-danger" %>
+          </div>
+        </td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>

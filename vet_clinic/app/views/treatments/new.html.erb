@@ -1,0 +1,6 @@
+<h1>Nuevo Tratamiento para la cita de <%= @appointment.pet.name %></h1>
+
+<%= render 'form', treatment: @treatment %>
+
+<br>
+<%= link_to 'Volver a la Cita', appointment_path(@appointment), class: "btn btn-secondary" %>
