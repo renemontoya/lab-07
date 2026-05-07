@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-4 text-center">
+          <% if @pet.photo.attached? %>
+            <%= image_tag @pet.photo.variant(resize_to_limit: [300, 300]), class: "img-fluid rounded border shadow-sm" %>
+          <% else %>
+            <div class="bg-light rounded border d-flex align-items-center justify-content-center mx-auto" style="width: 250px; height: 250px;">
+              <p class="text-muted">Sin foto disponible</p>
+            </div>
+          <% end %>
+        </div>
+        
+        <div class="col-md-8">
+          <h1><%= @pet.name %></h1>
+          <hr>
+          <p><strong>Especie:</strong> <%= @pet.species %></p>
+          <p><strong>Raza:</strong> <%= @pet.breed %></p>
+          <p><strong>Peso:</strong> <%= @pet.weight %> kg</p>
+          <p><strong>Fecha de Nacimiento:</strong> <%= @pet.date_of_birth %></p>
+          <p><strong>Dueño:</strong> <%= "#{@pet.owner.first_name} #{@pet.owner.last_name}" if @pet.owner %>
+          
+          <div class="mt-4">
+            <%= link_to 'Editar', edit_pet_path(@pet), class: "btn btn-warning" %>
+            <%= link_to 'Volver', pets_path, class: "btn btn-secondary" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

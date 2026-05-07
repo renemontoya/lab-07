@@ -11,5 +11,11 @@
     <%= f.datetime_field :administered_at, class: "form-control" %>
   </div>
 
+  <%# --- CAMPO DE NOTAS ENRIQUECIDAS (Action Text) --- %>
+  <div class="mb-3">
+    <%= f.label :clinical_notes, "Notas Clínicas", class: "form-label" %>
+    <%= f.rich_text_area :clinical_notes %>
+  </div>
+
   <%= f.submit "Guardar Tratamiento", class: "btn btn-primary" %>
 <% end %>

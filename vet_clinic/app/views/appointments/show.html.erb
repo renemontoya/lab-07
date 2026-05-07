@@ -1,24 +1,49 @@
-<h1>Detalle de la Cita</h1>
+<div class="container">
+  <div class="card mb-4 shadow">
+    <div class="card-header bg-primary text-white">
+      <h2 class="mb-0">Resumen de Cita: <%= @appointment.pet.name %></h2>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-6">
+          <p><strong>Fecha:</strong> <%= @appointment.date.strftime("%d/%m/%Y %H:%M") %></p>
+          <p><strong>Veterinario:</strong> <%= @appointment.vet.first_name %> <%= @appointment.vet.last_name %></p>
+        </div>
+        <div class="col-md-6">
+          <p><strong>Motivo:</strong> <%= @appointment.reason %></p>
+          <p><strong>Estado:</strong> <%= @appointment.status %></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<div class="card mb-3">
-  <div class="card-body">
-    <p><strong>Fecha:</strong> <%= @appointment.date %></p>
-    <p><strong>Mascota:</strong> <%= @appointment.pet.name %></p>
-    <p><strong>Veterinario:</strong> <%= @appointment.vet.last_name %></p>
-    <p><strong>Motivo:</strong> <%= @appointment.reason %></p>
-    <p><strong>Estado:</strong> <%= @appointment.status.humanize %></p>
+  <h3 class="mt-4 mb-3">🩺 Tratamientos Aplicados (Action Text)</h3>
+  <div class="row">
+    <% if @appointment.treatments.any? %>
+      <% @appointment.treatments.each do |treatment| %>
+        <div class="col-12 mb-3">
+          <div class="card border-start border-info border-4 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title text-info"><%= treatment.name %></h5>
+              <p class="text-muted small">Administrado: <%= treatment.administered_at %></p>
+              <hr>
+              <div class="clinical-notes-content">
+                <%# AQUÍ SE MUESTRA EL CONTENIDO ENRIQUECIDO DEL LAB 7 %>
+                <%= treatment.clinical_notes %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="col-12">
+        <div class="alert alert-warning">No hay tratamientos registrados para esta cita.</div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="mt-4">
+    <%= link_to 'Volver a Citas', appointments_path, class: "btn btn-secondary" %>
+    <%= link_to 'Ver Mascota', @appointment.pet, class: "btn btn-outline-dark" %>
   </div>
 </div>
-
-<h3>Tratamientos</h3>
-<ul class="list-group mb-3">
-  <% @appointment.treatments.each do |treatment| %>
-    <li class="list-group-item">
-      <strong><%= treatment.name %></strong> - Aplicado el: <%= treatment.administered_at %>
-    </li>
-  <% end %>
-</ul>
-
-<%= link_to 'Agregar Tratamiento', new_appointment_treatment_path(@appointment), class: "btn btn-success" %>
-<br><br>
-<%= link_to 'Volver', appointments_path, class: "btn btn-secondary" %>

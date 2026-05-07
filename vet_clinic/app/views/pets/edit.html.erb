@@ -1,0 +1,13 @@
+<div class="container">
+  <h1>Editar Mascota</h1>
+
+  <div class="card shadow-sm mt-4">
+    <div class="card-body">
+      <%= render "form", pet: @pet %>
+    </div>
+  </div>
+
+  <br>
+  <%= link_to "Ver Mascota", @pet, class: "btn btn-info" %>
+  <%= link_to "Volver", pets_path, class: "btn btn-secondary" %>
+</div>

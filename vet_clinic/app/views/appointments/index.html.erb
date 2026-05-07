@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Calendario de Citas</h1>
+  </div>
+
+  <table class="table table-striped shadow-sm">
+    <thead class="table-dark">
+      <tr>
+        <th>Mascota</th>
+        <th>Dueño</th>
+        <th>Veterinario</th>
+        <th>Fecha</th>
+        <th>Razón</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @appointments.each do |appointment| %>
+        <tr>
+          <td><strong><%= appointment.pet.name %></strong></td>
+          <td><%= appointment.pet.owner.last_name if appointment.pet.owner %></td>
+          <td>Dr. <%= appointment.vet.last_name if appointment.vet %></td>
+          <td><%= appointment.date.strftime("%d/%m/%Y %H:%M") %></td>
+          <td><%= appointment.reason %></td>
+          <td><span class="badge bg-info text-dark"><%= appointment.status %></span></td>
+          <td>
+            <%= link_to 'Ver Detalles', appointment, class: "btn btn-sm btn-primary" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

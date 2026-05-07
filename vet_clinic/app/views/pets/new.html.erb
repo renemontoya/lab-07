@@ -1,0 +1,12 @@
+<div class="container">
+  <h1>Nueva Mascota</h1>
+
+  <div class="card shadow-sm mt-4">
+    <div class="card-body">
+      <%= render "form", pet: @pet %>
+    </div>
+  </div>
+
+  <br>
+  <%= link_to "Volver a la lista", pets_path, class: "btn btn-secondary" %>
+</div>

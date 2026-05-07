@@ -6,5 +6,5 @@ Rails.application.routes.draw do
     resources :treatments, only: [:new, :create, :edit, :update, :destroy]
   end
 
-  root "owners#index"
+  root "pets#index"
 end
