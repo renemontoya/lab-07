@@ -1,5 +1,5 @@
 
-# Lab 3 — VetClinic: Models, Migrations, and Seed Data
+# Lab 7 — VetClinic: Models, Migrations, and Seed Data
 
 ## System Description
 
